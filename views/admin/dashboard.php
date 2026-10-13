@@ -43,7 +43,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 
         <div class="cards">
 
-            <a href="#" class="card">
+            <a href="createExam.php" class="card">
                 <h3>Create Exam</h3>
                 <p>Create new online exams</p>
             </a>
