@@ -48,7 +48,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
                 <p>Create new online exams</p>
             </a>
 
-            <a href="#" class="card">
+            <a href="manageExam.php" class="card">
                 <h3>Manage Exams</h3>
                 <p>View and manage all exams</p>
             </a>

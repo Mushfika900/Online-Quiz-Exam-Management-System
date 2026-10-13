@@ -30,5 +30,25 @@ function getAllExams()
 
     return $result;
 }
+function getExamById($id)
+{
+    global $conn;
+
+    $sql = "SELECT * FROM exams WHERE id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    $exam = mysqli_fetch_assoc($result);
+
+    mysqli_stmt_close($stmt);
+
+    return $exam;
+}
 
 ?>
