@@ -77,7 +77,15 @@ button:hover {
         margin: 25px auto;
     }
 
-    form {
+form {
         padding: 22px;
     }
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+}
 }
