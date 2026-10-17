@@ -83,4 +83,41 @@ if(isset($_POST['updateExam']))
     }
 }
 
+if(isset($_POST['deleteExam']))
+{
+    $id = (int)$_POST['id'];
+
+    if($id <= 0)
+    {
+        echo "Invalid Exam ID";
+    }
+    else
+    {
+        $exam = getExamById($id);
+
+    if(!$exam)
+{
+    echo "Exam Not Found";
+}
+else if(hasExamData($id))
+{
+    echo "Cannot Delete! This Exam has related data.";
+}
+else
+{
+    $result = deleteExam($id);
+
+    if($result)
+    {
+        header("Location: ../views/admin/manageExam.php?deleted=1");
+        exit();
+    }
+    else
+    {
+        echo "Exam Delete Failed";
+    }
+}
+    }
+}
+
 ?>

@@ -35,7 +35,7 @@ $totalExams = mysqli_num_rows($exams);
     <div class="header">
 
         <div class="logo">
-            QuizExam Admin
+            Quiz Exam Admin
         </div>
 
         <a href="dashboard.php" class="back-btn">
@@ -53,6 +53,12 @@ $totalExams = mysqli_num_rows($exams);
         {
             echo "<p class='success-message'>Exam Updated Successfully!</p>";
         }
+
+        if(isset($_GET['deleted']))
+        {
+           echo "<p class='success-message'>Exam Deleted Successfully!</p>";
+        }
+
         ?>
 
         <!-- Page Header -->

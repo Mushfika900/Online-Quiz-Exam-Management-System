@@ -70,4 +70,53 @@ function updateExam($id, $title, $description, $duration, $status)
     return $result;
 }
 
+function deleteExam($id)
+{
+    global $conn;
+
+    $sql = "DELETE FROM exams WHERE id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
+
+function hasExamData($id)
+{
+    global $conn;
+
+    $sql = "SELECT
+        (SELECT COUNT(*) FROM questions WHERE exam_id = ?) AS total_questions,
+        (SELECT COUNT(*) FROM results WHERE exam_id = ?) AS total_results,
+        (SELECT COUNT(*) FROM student_answers WHERE exam_id = ?) AS total_answers";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "iii", $id, $id, $id);
+
+    mysqli_stmt_execute($stmt);
+
+    $result = mysqli_stmt_get_result($stmt);
+
+    $data = mysqli_fetch_assoc($result);
+
+    mysqli_stmt_close($stmt);
+
+    if($data['total_questions'] > 0 ||
+       $data['total_results'] > 0 ||
+       $data['total_answers'] > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 ?>
