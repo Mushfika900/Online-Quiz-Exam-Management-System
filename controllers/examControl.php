@@ -43,5 +43,44 @@ if(isset($_POST['createExam']))
         }
     }
 }
+if(isset($_POST['updateExam']))
+{
+    $id = (int)$_POST['id'];
+    $title = trim($_POST['title']);
+    $description = trim($_POST['description']);
+    $duration = trim($_POST['duration']);
+    $status = $_POST['status'];
+
+    if($id <= 0 || empty($title) || $duration == '')
+    {
+        echo "All required fields must be filled";
+    }
+    else if(strlen($title) > 150)
+    {
+        echo "Exam Title is too long";
+    }
+    else if(!ctype_digit($duration) || (int)$duration < 1)
+    {
+        echo "Enter a valid Duration";
+    }
+    else if($status != 'active' && $status != 'inactive')
+    {
+        echo "Invalid Exam Status";
+    }
+    else
+    {
+        $result = updateExam($id, $title, $description, (int)$duration, $status);
+
+        if($result)
+        {
+            header("Location: ../views/admin/manageExam.php?updated=1");
+            exit();
+        }
+        else
+        {
+            echo "Exam Update Failed";
+        }
+    }
+}
 
 ?>

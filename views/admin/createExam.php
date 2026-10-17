@@ -22,7 +22,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin')
 <body>
 
     <div class="header">
-        <h2>QuizExam Admin</h2>
+        <h2>Quiz Exam Admin</h2>
         <a href="dashboard.php">Back to Dashboard</a>
     </div>
 

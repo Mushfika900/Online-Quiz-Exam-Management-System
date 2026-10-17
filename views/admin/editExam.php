@@ -40,8 +40,8 @@ if(!$exam)
 <body>
 
     <div class="header">
-        <h2>QuizExam Admin</h2>
-        <a href="manageExams.php">Back to Exams</a>
+        <h2>Quiz Exam Admin</h2>
+        <a href="manageExam.php">Back to Exams</a>
     </div>
 
     <div class="container">

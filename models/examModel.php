@@ -50,5 +50,24 @@ function getExamById($id)
 
     return $exam;
 }
+function updateExam($id, $title, $description, $duration, $status)
+{
+    global $conn;
+
+    $sql = "UPDATE exams
+            SET title = ?, description = ?, duration = ?, status = ?
+            WHERE id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "ssisi",
+        $title, $description, $duration, $status, $id);
+
+    $result = mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return $result;
+}
 
 ?>

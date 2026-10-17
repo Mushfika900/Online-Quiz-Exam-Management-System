@@ -23,13 +23,20 @@ $totalExams = mysqli_num_rows($exams);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Manage Exams</title>
 
-    <link rel="stylesheet" href="../css/manageExam.css">
+    <link rel="stylesheet" href="../css/manageExam.css?v=2">
+
 </head>
 <body>
 
-    <div class="header">Quiz Exam Admin</div>
+    <!-- Header -->
+    <div class="header">
+
+        <div class="logo">
+            QuizExam Admin
+        </div>
 
         <a href="dashboard.php" class="back-btn">
             Back to Dashboard
@@ -38,9 +45,17 @@ $totalExams = mysqli_num_rows($exams);
     </div>
 
 
+    <!-- Main Container -->
     <div class="container">
 
-        
+        <?php
+        if(isset($_GET['updated']))
+        {
+            echo "<p class='success-message'>Exam Updated Successfully!</p>";
+        }
+        ?>
+
+        <!-- Page Header -->
         <div class="page-header">
 
             <div>
@@ -54,7 +69,8 @@ $totalExams = mysqli_num_rows($exams);
 
         </div>
 
-       
+
+        <!-- Summary Card -->
         <div class="summary-card">
 
             <h3>Total Exams</h3>
@@ -65,13 +81,18 @@ $totalExams = mysqli_num_rows($exams);
 
         </div>
 
-        
+
+        <!-- Exam List -->
         <div class="table-container">
 
             <div class="table-heading">
+
                 <h2>Exam List</h2>
+
                 <p>All created exams are listed below.</p>
+
             </div>
+
 
             <table>
 
@@ -87,15 +108,16 @@ $totalExams = mysqli_num_rows($exams);
                     </tr>
                 </thead>
 
+
                 <tbody>
 
-                    <?php
+                <?php
 
-                    if(mysqli_num_rows($exams) > 0)
+                if($totalExams > 0)
+                {
+                    while($exam = mysqli_fetch_assoc($exams))
                     {
-                        while($exam = mysqli_fetch_assoc($exams))
-                        {
-                    ?>
+                ?>
 
                     <tr>
 
@@ -121,21 +143,17 @@ $totalExams = mysqli_num_rows($exams);
                             if($exam['status'] == 'active')
                             {
                             ?>
-
                                 <span class="status active">
                                     Active
                                 </span>
-
                             <?php
                             }
                             else
                             {
                             ?>
-
                                 <span class="status inactive">
-                                    <?php echo htmlspecialchars($exam['status']); ?>
+                                    Inactive
                                 </span>
-
                             <?php
                             }
                             ?>
@@ -145,21 +163,48 @@ $totalExams = mysqli_num_rows($exams);
                         <td>
                             <?php echo htmlspecialchars($exam['created_at']); ?>
                         </td>
-                        <td>
-                           <a href="editExam.php?id=<?php echo $exam['id']; ?>"
-                                 class="edit-btn">
-                                 Edit
-                            </a>
+
+
+                        <!-- Action Column -->
+                        <td class="action-buttons">
+
+                            <div class="exam-actions">
+
+                                <!-- Edit -->
+                                <a href="editExam.php?id=<?php echo $exam['id']; ?>"
+                                   class="edit-btn">
+                                    Edit
+                                </a>
+
+                                <!-- Delete -->
+                                <form action="../../controllers/examControl.php"
+                                      method="POST"
+                                      onsubmit="return confirm('Are you sure you want to delete this exam?');">
+
+                                    <input type="hidden"
+                                           name="id"
+                                           value="<?php echo $exam['id']; ?>">
+
+                                    <button type="submit"
+                                            name="deleteExam"
+                                            class="delete-btn">
+                                        Delete
+                                    </button>
+
+                                </form>
+
+                            </div>
+
                         </td>
 
                     </tr>
 
-                    <?php
-                        }
+                <?php
                     }
-                    else
-                    {
-                    ?>
+                }
+                else
+                {
+                ?>
 
                     <tr>
                         <td colspan="7" class="empty">
@@ -167,9 +212,9 @@ $totalExams = mysqli_num_rows($exams);
                         </td>
                     </tr>
 
-                    <?php
-                    }
-                    ?>
+                <?php
+                }
+                ?>
 
                 </tbody>
 
