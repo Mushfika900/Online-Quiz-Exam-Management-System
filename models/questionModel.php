@@ -1,6 +1,6 @@
 <?php
 
-require_once "../config/dbConnect.php";
+require_once __DIR__."/../config/dbConnect.php";
 
 function addQuestion($exam_id, $question, $option_a, $option_b, $option_c, $option_d, $correct_answer)
 {
