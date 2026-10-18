@@ -96,3 +96,12 @@ button:hover {
         padding: 22px;
     }
 }
+.success-message {
+    background-color: #b8d8c4;
+    color: #0f5428;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}

@@ -34,6 +34,11 @@ $exams = getAllExams();
 
         <h1>Add MCQ Question</h1>
         <p>Create questions for your online exams.</p>
+        <?php
+        if(isset($_GET['success'])){
+            echo "<p class='success-message'>Question Added Successfully!</p>";
+        }
+        ?>
 
         <form action="../../controllers/questionControl.php" method="POST">
 

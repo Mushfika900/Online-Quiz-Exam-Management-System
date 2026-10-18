@@ -60,7 +60,8 @@ if(isset($_POST['addQuestion']))
 
             if($result)
             {
-                echo "Question Added Successfully";
+                header("Location:../views/admin/addQuestion.php?success=1");
+                exit();
             }
             else
             {
