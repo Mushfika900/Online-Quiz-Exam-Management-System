@@ -32,8 +32,11 @@ function addQuestion($exam_id, $question, $option_a, $option_b, $option_c, $opti
 function getAllQuestions()
 {
     global $conn;
-
-    $sql = "SELECT * FROM questions ORDER BY id DESC";
+    $sql = "SELECT questions.*, exams.title AS exam_name
+        FROM questions
+        INNER JOIN exams
+        ON questions.exam_id = exams.id
+        ORDER BY questions.id DESC";
 
     $result = mysqli_query($conn, $sql);
 

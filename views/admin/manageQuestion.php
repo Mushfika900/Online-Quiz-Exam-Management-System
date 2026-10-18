@@ -13,6 +13,7 @@ $questions = getAllQuestions();
           content="width=device-width, initial-scale=1.0">
 
     <title>Manage Questions</title>
+    <link rel="stylesheet" href="../css/manageQuestion.css">
 </head>
 <body>
 
@@ -27,7 +28,7 @@ $questions = getAllQuestions();
     <thead>
         <tr>
             <th>ID</th>
-            <th>Exam ID</th>
+            <th>Exam Name</th>
             <th>Question</th>
             <th>Option A</th>
             <th>Option B</th>
@@ -41,7 +42,7 @@ $questions = getAllQuestions();
         <?php while ($row = mysqli_fetch_assoc($questions)) { ?>
             <tr>
                 <td><?= htmlspecialchars($row['id']) ?></td>
-                <td><?= htmlspecialchars($row['exam_id']) ?></td>
+                <td><?= htmlspecialchars($row['exam_name']) ?></td>
                 <td><?= htmlspecialchars($row['question']) ?></td>
                 <td><?= htmlspecialchars($row['option_a']) ?></td>
                 <td><?= htmlspecialchars($row['option_b']) ?></td>
