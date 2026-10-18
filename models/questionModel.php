@@ -29,4 +29,15 @@ function addQuestion($exam_id, $question, $option_a, $option_b, $option_c, $opti
     return $result;
 }
 
+function getAllQuestions()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM questions ORDER BY id DESC";
+
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
+
 ?>
