@@ -35,6 +35,7 @@ $questions = getAllQuestions();
             <th>Option C</th>
             <th>Option D</th>
             <th>Correct Answer</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -49,6 +50,11 @@ $questions = getAllQuestions();
                 <td><?= htmlspecialchars($row['option_c']) ?></td>
                 <td><?= htmlspecialchars($row['option_d']) ?></td>
                 <td><?= htmlspecialchars($row['correct_answer']) ?></td>
+                <td>
+                <a href="editQuestion.php?id=<?= (int)$row['id'] ?>">
+                Edit
+               </a>
+               </td>
             </tr>
         <?php } ?>
     </tbody>

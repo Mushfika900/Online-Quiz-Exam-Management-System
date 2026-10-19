@@ -71,4 +71,51 @@ if(isset($_POST['addQuestion']))
     }
 }
 
+if (isset($_POST['updateQuestion'])) {
+
+    $id = (int) ($_POST['id'] ?? 0);
+    $question = trim($_POST['question'] ?? '');
+    $option_a = trim($_POST['option_a'] ?? '');
+    $option_b = trim($_POST['option_b'] ?? '');
+    $option_c = trim($_POST['option_c'] ?? '');
+    $option_d = trim($_POST['option_d'] ?? '');
+    $correct_answer = strtoupper(trim($_POST['correct_answer'] ?? ''));
+
+    if (
+        $id <= 0 ||
+        $question === '' ||
+        $option_a === '' ||
+        $option_b === '' ||
+        $option_c === '' ||
+        $option_d === ''
+    ) {
+        die("All fields are required");
+    }
+
+    if (!in_array($correct_answer, ['A', 'B', 'C', 'D'], true)) {
+        die("Invalid Correct Answer");
+    }
+
+    if (!getQuestionById($id)) {
+        die("Question not found");
+    }
+
+    $result = updateQuestion(
+        $id,
+        $question,
+        $option_a,
+        $option_b,
+        $option_c,
+        $option_d,
+        $correct_answer
+    );
+
+    if ($result) {
+        header("Location: ../views/admin/manageQuestion.php?updated=1");
+        exit();
+    } else {
+        echo "Question Update Failed";
+    }
+}
+
 ?>

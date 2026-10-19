@@ -43,4 +43,47 @@ function getAllQuestions()
     return $result;
 }
 
+function getQuestionById($id)
+{
+    global $conn;
+
+    $id = (int) $id;
+
+    $sql = "SELECT * FROM questions WHERE id = $id";
+
+    $result = mysqli_query($conn, $sql);
+
+    return mysqli_fetch_assoc($result);
+}
+
+function updateQuestion($id, $question, $option_a, $option_b, $option_c, $option_d, $correct_answer)
+{
+    global $conn;
+
+    $sql = "UPDATE questions SET
+            question = ?,
+            option_a = ?,
+            option_b = ?,
+            option_c = ?,
+            option_d = ?,
+            correct_answer = ?
+            WHERE id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "ssssssi",
+        $question,
+        $option_a,
+        $option_b,
+        $option_c,
+        $option_d,
+        $correct_answer,
+        $id
+    );
+
+    return mysqli_stmt_execute($stmt);
+}
+
 ?>
