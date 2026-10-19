@@ -118,4 +118,74 @@ if (isset($_POST['updateQuestion'])) {
     }
 }
 
+if (isset($_POST['deleteQuestion'])) {
+
+    require_once __DIR__. "/../config/dbConnect.php";
+
+    $id = (int) ($_POST['id'] ?? 0);
+
+    if ($id <= 0) {
+        die("Invalid Question ID");
+    }
+
+    $question = getQuestionById($id);
+
+    if (!$question) {
+        die("Question not found");
+    }
+
+    
+    $sql = "SELECT COUNT(*) FROM student_answers WHERE question_id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $answerCount);
+
+    mysqli_stmt_fetch($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if ($answerCount > 0) {
+        die("Cannot delete: Students have already answered this question.");
+    }
+
+   
+    $sql = "SELECT COUNT(*) FROM results WHERE exam_id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    $examId = (int) $question['exam_id'];
+
+    mysqli_stmt_bind_param($stmt, "i", $examId);
+
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_bind_result($stmt, $resultCount);
+
+    mysqli_stmt_fetch($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    if ($resultCount > 0) {
+        die("Cannot delete: Exam results already exist.");
+    }
+
+    // Delete question
+    $result = deleteQuestion($id);
+
+    if ($result) {
+
+        header("Location: ../views/admin/manageQuestion.php?deleted=1");
+        exit();
+
+    } else {
+
+        echo "Question Delete Failed";
+    }
+}
+
 ?>

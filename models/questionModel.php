@@ -86,4 +86,17 @@ function updateQuestion($id, $question, $option_a, $option_b, $option_c, $option
     return mysqli_stmt_execute($stmt);
 }
 
+function deleteQuestion($id)
+{
+    global $conn;
+
+    $sql = "DELETE FROM questions WHERE id = ?";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "i", $id);
+
+    return mysqli_stmt_execute($stmt);
+}
+
 ?>
