@@ -13,7 +13,7 @@ $questions = getAllQuestions();
           content="width=device-width, initial-scale=1.0">
 
     <title>Manage Questions</title>
-    <link rel="stylesheet" href="../css/manageQuestion.css">
+    <link rel="stylesheet" href="../css/manageQuestion.css?v=3">
 </head>
 <body>
 
