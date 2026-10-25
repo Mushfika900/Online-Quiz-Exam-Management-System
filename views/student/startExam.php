@@ -30,7 +30,7 @@ $questions = getQuestionsByExamId($exam_id);
     <h2>Exam ID: <?php echo $exam_id; ?></h2>
 
     <h2>Exam Questions</h2>
-    <form action="#" method="POST">
+    <form action="../../controllers/studentExamControl.php" method="POST">
 
     <input type="hidden" name="exam_id" value="<?php echo $exam_id; ?>">
 
@@ -84,7 +84,7 @@ if (mysqli_num_rows($questions) > 0) {
     echo "No questions available for this exam.";
 }
 ?>
-      <button type="submit">Submit Exam</button>
+    <button type="submit" name="submitExam" value="1">Submit Exam</button>
     </form>
 
     <a href="availableExams.php">Back to Available Exams</a>
