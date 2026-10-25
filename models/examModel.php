@@ -119,4 +119,20 @@ function hasExamData($id)
         return false;
     }
 }
+
+
+// Student 
+
+function getActiveExams()
+{
+    global $conn;
+
+    $sql = "SELECT * FROM exams
+            WHERE status = 'active'
+            ORDER BY id DESC";
+
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
 ?>
