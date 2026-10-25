@@ -99,4 +99,19 @@ function deleteQuestion($id)
     return mysqli_stmt_execute($stmt);
 }
 
+function getQuestionsByExamId($exam_id)
+{
+    global $conn;
+
+    $exam_id = (int)$exam_id;
+
+    $sql = "SELECT * FROM questions
+            WHERE exam_id = $exam_id
+            ORDER BY id ASC";
+
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
+
 ?>
