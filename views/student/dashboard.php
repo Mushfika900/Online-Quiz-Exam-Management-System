@@ -19,7 +19,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'student')
 
     <h2>Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></h2>
 
-    <a href="#">Available Exams</a>
+    <a href="availableExams.php">Available Exams</a>
     <br><br>
 
     <a href="#">My Results</a>

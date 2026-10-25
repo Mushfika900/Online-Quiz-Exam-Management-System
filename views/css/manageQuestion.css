@@ -37,8 +37,6 @@ a:hover {
     color: #4c1d95;
 }
 
-/* Question Table */
-
 table {
     width: 100%;
     min-width: 900px;
@@ -94,8 +92,6 @@ td a:hover {
     color: white;
 }
 
-/* Delete Button */
-
 td button {
     border: none;
     background: #fee2e2;
@@ -111,8 +107,6 @@ td button:hover {
     background: #dc2626;
     color: white;
 }
-
-/* Responsive Design */
 
 @media (max-width: 768px) {
     body {

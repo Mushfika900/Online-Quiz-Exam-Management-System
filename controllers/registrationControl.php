@@ -31,7 +31,8 @@ if(isset($_POST['register']))
 
         if($result)
         {
-            echo "Registration Successful";
+            header("Location:../views/login.php");
+            exit();
         }
         else
         {
