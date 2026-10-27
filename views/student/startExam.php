@@ -110,10 +110,17 @@ if (mysqli_num_rows($questions) > 0) {
     </form>
 
     <a href="availableExams.php">Back to Available Exams</a>
-    <script>
-let timeLeft = <?php echo $duration; ?> * 60;
+<script>
+let endTime = <?php echo (int)$endTime; ?> * 1000;
 
 function updateTimer() {
+
+    let currentTime = Date.now();
+
+    let timeLeft = Math.max(
+        0,
+        Math.ceil((endTime - currentTime) / 1000)
+    );
 
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
@@ -126,16 +133,13 @@ function updateTimer() {
 
     if (timeLeft <= 0) {
         clearInterval(timerInterval);
-        return;
+        alert("Exam Time is Over!");
     }
-
-    timeLeft--;
 }
 
 let timerInterval = setInterval(updateTimer, 1000);
 
 updateTimer();
 </script>
-
 </body>
 </html>
