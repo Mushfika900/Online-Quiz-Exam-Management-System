@@ -1,6 +1,8 @@
 <?php
 session_start();
+require_once __DIR__."/../config/dbConnect.php";
 require_once __DIR__."/../models/questionModel.php";
+require_once __DIR__."/../models/resultModel.php";
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'student') {
     header("Location: ../views/login.php");
@@ -46,10 +48,37 @@ if ($total_questions == 0) {
 
 $score = ($correct_answers / $total_questions) * 100;
 
-echo "Total Questions: " . $total_questions;
-echo "<br>";
-echo "Correct Answers: " . $correct_answers;
-echo "<br>";
-echo "Score: " . round($score, 2) . "%";
+
+$sql = "SELECT id FROM results
+        WHERE user_id = ? AND exam_id = ? LIMIT 1";
+
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "ii", $user_id, $exam_id);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
+
+if (mysqli_stmt_num_rows($stmt) > 0) {
+    die("You have already submitted this exam.");
+}
+
+mysqli_stmt_close($stmt);
+
+
+$result = saveExamResult(
+    $user_id,
+    $exam_id,
+    $total_questions,
+    $correct_answers,
+    $score
+);
+
+if ($result) {
+    echo "Exam Submitted Successfully!";
+    echo "<br>Total Questions: " . $total_questions;
+    echo "<br>Correct Answers: " . $correct_answers;
+    echo "<br>Score: " . round($score, 2) . "%";
+} else {
+    echo "Failed to save exam result.";
+}
 }
 ?>
