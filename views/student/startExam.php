@@ -52,8 +52,7 @@ $endTime = $_SESSION['exam_end_times'][$exam_id];
     <h3>Time Remaining: <span id="timer"></span></h3>
 
     <h2>Exam Questions</h2>
-    <form action="../../controllers/studentExamControl.php" method="POST">
-
+    <form id="examForm" action="../../controllers/studentExamControl.php" method="POST">
     <input type="hidden" name="exam_id" value="<?php echo $exam_id; ?>">
 
 <?php
@@ -132,9 +131,13 @@ function updateTimer() {
         minutes + ":" + seconds;
 
     if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        alert("Exam Time is Over!");
-    }
+    clearInterval(timerInterval);
+
+    let form = document.getElementById('examForm');
+    let submitButton = form.querySelector('button[name="submitExam"]');
+
+    form.requestSubmit(submitButton);
+}
 }
 
 let timerInterval = setInterval(updateTimer, 1000);
