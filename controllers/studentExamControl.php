@@ -73,10 +73,8 @@ $result = saveExamResult(
 );
 
 if ($result) {
-    echo "Exam Submitted Successfully!";
-    echo "<br>Total Questions: " . $total_questions;
-    echo "<br>Correct Answers: " . $correct_answers;
-    echo "<br>Score: " . round($score, 2) . "%";
+    header("Location: ../views/student/result.php?exam_id=" . $exam_id);
+    exit();
 } else {
     echo "Failed to save exam result.";
 }
