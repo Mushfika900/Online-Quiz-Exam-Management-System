@@ -22,7 +22,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'student')
     <a href="availableExams.php">Available Exams</a>
     <br><br>
 
-    <a href="#">My Results</a>
+    <a href="myResults.php">My Results</a>
     <br><br>
 
     <a href="../logout.php">Logout</a>
