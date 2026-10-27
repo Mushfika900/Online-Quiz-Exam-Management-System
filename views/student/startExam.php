@@ -14,6 +14,26 @@ if ($exam_id <= 0) {
 require_once __DIR__. "/../../models/questionModel.php";
 
 $questions = getQuestionsByExamId($exam_id);
+require_once __DIR__. "/../../models/examModel.php";
+
+$exam = getExamById($exam_id);
+
+if (!$exam || $exam['status'] != 'active') {
+    die("Exam not available");
+}
+
+$duration = (int)$exam['duration'];
+
+if ($duration <= 0) {
+    die("Invalid Exam Duration");
+}
+if (!isset($_SESSION['exam_end_times'][$exam_id])) {
+
+    $_SESSION['exam_end_times'][$exam_id] = time() + ($duration * 60);
+
+}
+
+$endTime = $_SESSION['exam_end_times'][$exam_id];
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +48,8 @@ $questions = getQuestionsByExamId($exam_id);
     <h1>Start Exam</h1>
 
     <h2>Exam ID: <?php echo $exam_id; ?></h2>
+    <h3>Duration: <?php echo $duration; ?> Minutes</h3>
+    <h3>Time Remaining: <span id="timer"></span></h3>
 
     <h2>Exam Questions</h2>
     <form action="../../controllers/studentExamControl.php" method="POST">
@@ -88,6 +110,32 @@ if (mysqli_num_rows($questions) > 0) {
     </form>
 
     <a href="availableExams.php">Back to Available Exams</a>
+    <script>
+let timeLeft = <?php echo $duration; ?> * 60;
+
+function updateTimer() {
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    minutes = String(minutes).padStart(2, '0');
+    seconds = String(seconds).padStart(2, '0');
+
+    document.getElementById('timer').innerText =
+        minutes + ":" + seconds;
+
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        return;
+    }
+
+    timeLeft--;
+}
+
+let timerInterval = setInterval(updateTimer, 1000);
+
+updateTimer();
+</script>
 
 </body>
 </html>
