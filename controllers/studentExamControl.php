@@ -3,6 +3,8 @@ session_start();
 require_once __DIR__."/../config/dbConnect.php";
 require_once __DIR__."/../models/questionModel.php";
 require_once __DIR__."/../models/resultModel.php";
+require_once __DIR__."/../models/studentAnswerModel.php";
+
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'student') {
     header("Location: ../views/login.php");
@@ -83,10 +85,31 @@ $result = saveExamResult(
 );
 
 if ($result) {
+
+    $questions = getQuestionsByExamId($exam_id);
+
+    while ($row = mysqli_fetch_assoc($questions)) {
+
+        $question_id = $row['id'];
+
+        if (isset($answers[$question_id])) {
+
+            $selected_answer = $answers[$question_id];
+
+            saveStudentAnswer(
+                $user_id,
+                $exam_id,
+                $question_id,
+                $selected_answer
+            );
+        }
+    }
+
     header("Location: ../views/student/result.php?exam_id=" . $exam_id);
     exit();
+
 } else {
-    echo "Failed to save exam result.";
+    echo "Exam submission failed";
 }
 }
 ?>
