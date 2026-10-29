@@ -21,6 +21,16 @@ if (isset($_POST['submitExam'])) {
         die("Invalid Exam Submission");
     }
 
+    if (!isset($_SESSION['exam_end_times'][$exam_id])) {
+    die("Exam session not found.");
+}
+
+$endTime = $_SESSION['exam_end_times'][$exam_id];
+
+if (time() > $endTime + 10) {
+    die("Exam time is over. Submission not allowed.");
+}
+
     $questions = getQuestionsByExamId($exam_id);
 
 $total_questions = 0;
