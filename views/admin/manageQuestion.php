@@ -13,7 +13,7 @@ $questions = getAllQuestions();
           content="width=device-width, initial-scale=1.0">
 
     <title>Manage Questions</title>
-    <link rel="stylesheet" href="../css/manageQuestion.css?v=3">
+    <link rel="stylesheet" href="../css/manageQuestion.css?v=11">
 </head>
 <body>
 
@@ -22,7 +22,12 @@ $questions = getAllQuestions();
     <p>View and manage all exam questions.</p>
 
     <a href="dashboard.php">Back to Dashboard</a>
-
+    
+    <div class="add-question-section">
+    <a href="addQuestion.php" class="add-question-btn">
+        + Add Question
+    </a>
+    </div>
     <h2>Question List</h2>
     <table border="1" cellpadding="10" cellspacing="0">
     <thead>

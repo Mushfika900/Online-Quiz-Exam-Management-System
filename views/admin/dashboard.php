@@ -56,7 +56,9 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
             <a href="manageQuestion.php" class="card">
                 <h3>Manage Questions</h3>
                 <p>Add and update MCQ questions</p>
+                
             </a>
+           
 
             <a href="#" class="card">
                 <h3>View Results</h3>
