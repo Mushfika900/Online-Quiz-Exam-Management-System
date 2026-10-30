@@ -17,12 +17,13 @@ $results = getAllExamResults();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Exam Results</title>
+     <link rel="stylesheet" href="../css/viewResults.css">
 </head>
 <body>
 
     <h1>View Exam Results</h1>
 
-    <p>View all students' exam results.</p>
+    <p>View all students exam results.</p>
 
     <a href="dashboard.php">Back to Dashboard</a>
 

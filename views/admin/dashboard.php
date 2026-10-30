@@ -60,7 +60,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
             </a>
            
 
-            <a href="#" class="card">
+            <a href="viewResults.php" class="card">
                 <h3>View Results</h3>
                 <p>Check student exam results</p>
             </a>

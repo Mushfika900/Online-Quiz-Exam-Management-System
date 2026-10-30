@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 35px;
+    background: #f8f9fd;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #29243c;
+}
+
+h1 {
+    color: #4c1d95;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #777;
+    font-size: 14px;
+}
+
+h2 {
+    color: #35246b;
+    font-size: 20px;
+    margin-top: 35px;
+}
+
+/* Back to Dashboard */
+
+body > a {
+    display: inline-block;
+    background: #6d28d9;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+body > a:hover {
+    background: #4c1d95;
+}
+
+/* Results Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+th {
+    background: #6d28d9;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+tr:hover {
+    background: #f5f0ff;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 800px;
+    }
+}
