@@ -11,6 +11,16 @@ $exam_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 if ($exam_id <= 0) {
     die("Invalid Exam ID");
 }
+require_once __DIR__. "/../../models/resultModel.php";
+
+$user_id = $_SESSION['user_id'];
+
+$result = getStudentResult($user_id, $exam_id);
+
+if ($result) {
+    header("Location: result.php?exam_id=" . $exam_id);
+    exit();
+}
 require_once __DIR__. "/../../models/questionModel.php";
 
 $questions = getQuestionsByExamId($exam_id);
