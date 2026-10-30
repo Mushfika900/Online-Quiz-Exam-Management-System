@@ -66,3 +66,16 @@ function getStudentResults($user_id)
 
     return $result;
 }
+function getAllExamResults()
+{
+    global $conn;
+
+    $sql = "SELECT results.*, exams.title AS exam_name
+            FROM results
+            INNER JOIN exams ON results.exam_id = exams.id
+            ORDER BY results.id DESC";
+
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
