@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+    background: #f7f8fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #28334d;
+}
+
+h1 {
+    background: linear-gradient(135deg, #293f82, #5264bb);
+    color: white;
+    padding: 32px;
+    border-radius: 12px;
+    font-size: 28px;
+    margin: 0 0 28px;
+    box-shadow: 0 5px 18px rgba(40, 60, 130, 0.12);
+}
+
+h2 {
+    font-size: 22px;
+    color: #303b60;
+    margin: 0 0 25px;
+}
+
+body > br {
+    display: none;
+}
+
+body > a {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: top;
+    width: 280px;
+    min-height: 150px;
+    padding: 25px;
+    margin: 0 18px 20px 0;
+    background: #ffffff;
+    border: 1px solid #e5e8f2;
+    border-radius: 12px;
+    color: #343c68;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: 0.2s;
+}
+
+body > a:hover {
+    background: #f0efff;
+    border-color: #a7a2e7;
+    transform: translateY(-4px);
+}
+
+body > a:first-of-type::before {
+    content: "📚";
+    display: block;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+body > a:first-of-type::after {
+    content: "View and start available exams";
+    font-size: 13px;
+    font-weight: 400;
+    color: #858b9d;
+    margin-top: 10px;
+}
+
+body > a:nth-of-type(2)::before {
+    content: "📊";
+    display: block;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+body > a:nth-of-type(2)::after {
+    content: "Check your exam performance";
+    font-size: 13px;
+    font-weight: 400;
+    color: #858b9d;
+    margin-top: 10px;
+}
+
+body > a:last-of-type {
+    display: flex;
+    width: fit-content;
+    min-height: auto;
+    padding: 12px 22px;
+    margin-top: 15px;
+    background: #fff0f0;
+    border: 1px solid #fbd4d4;
+    color: #d94141;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+body > a:last-of-type:hover {
+    background: #d94141;
+    color: white;
+}
+
+
+@media (max-width: 650px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        padding: 25px;
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    body > a {
+        width: 100%;
+        margin-right: 0;
+        min-height: 130px;
+    }
+}

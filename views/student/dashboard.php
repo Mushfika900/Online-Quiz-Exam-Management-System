@@ -12,6 +12,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'student')
 <html>
 <head>
     <title>Student Dashboard</title>
+     <link rel="stylesheet" href="../css/studentDashboard.css">
 </head>
 <body>
 
