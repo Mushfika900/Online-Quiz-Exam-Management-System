@@ -4,67 +4,202 @@
 
 body {
     margin: 0;
-    padding: 40px;
-    background: #f7f8fc;
-    font-family: Arial, sans-serif;
-    color: #28334d;
+    padding: 35px 20px 60px;
+    min-height: 100vh;
+    background: #f4f6fc;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #27314e;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    color: #293f82;
-    font-size: 28px;
+body > h1,
+body > h2,
+body > h3,
+body > form,
+body > a {
+    width: 100%;
+    max-width: 950px;
 }
 
-h2 {
-    color: #303b60;
-    margin-top: 25px;
+body > h1 {
+    margin: 0 0 24px;
+    padding: 35px 30px;
+    background: linear-gradient(135deg, #293f82, #5264bb);
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(41, 63, 130, 0.15);
 }
 
-h3 {
-    color: #394b85;
-}
-form > div {
-    background: white;
-    padding: 22px;
-    margin-bottom: 18px;
-    border: 1px solid #e5e8f2;
+body > h2,
+body > h3 {
+    margin: 0 0 12px;
+    padding: 18px 24px;
+    background: #ffffff;
+    border: 1px solid #e6eaf5;
     border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #344673;
 }
 
-label {
+body > h3:has(#timer) {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding: 25px;
+    background: #e9edff;
+    border: 1px solid #cbd5ff;
+    color: #344a9e;
+    text-align: center;
+    border-radius: 14px;
+    font-size: 15px;
+    box-shadow: 0 5px 18px rgba(58, 75, 150, 0.06);
+}
+
+#timer {
     display: block;
-    padding: 8px 0;
+    margin-top: 12px;
+    color: #293f82;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+}
+
+body > h2:not(:first-of-type) {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 8px 0 18px;
+    font-size: 22px;
+    color: #293f82;
+}
+
+form {
+    margin: 0;
+}
+
+form > div {
+    background: #ffffff;
+    padding: 28px;
+    border: 1px solid #e5eaf5;
+    border-radius: 15px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 22px rgba(40, 55, 100, 0.05);
+}
+
+form > div h3 {
+    margin: 0 0 22px;
+    color: #283a72;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+form > div label {
+    display: block;
+    padding: 15px 18px;
+    margin-bottom: 10px;
+    background: #f8f9fd;
+    border: 1px solid #e5e9f3;
+    border-radius: 9px;
+    color: #424e68;
+    font-size: 14px;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+form > div label:hover {
+    background: #eef1ff;
+    border-color: #a6b3ef;
+}
+
+form > div label:has(input:checked) {
+    background: #e9edff;
+    border-color: #5264bb;
+    color: #293f82;
+    font-weight: 600;
 }
 
 input[type="radio"] {
     accent-color: #5264bb;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
-button {
+form > hr {
+    display: none;
+}
+
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 16px 25px;
     background: #5264bb;
     color: white;
-    padding: 12px 25px;
     border: none;
-    border-radius: 7px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(82, 100, 187, 0.15);
 }
 
-button:hover {
+form button[type="submit"]:hover {
     background: #293f82;
+    transform: translateY(-2px);
 }
 
 body > a {
-    display: inline-block;
-    margin-top: 20px;
+    display: block;
+    margin-top: 25px;
+    padding: 13px;
+    text-align: center;
     color: #5264bb;
+    font-size: 14px;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
+}
+
+body > a:hover {
+    color: #293f82;
+    text-decoration: underline;
 }
 
 @media (max-width: 600px) {
+
     body {
-        padding: 20px;
+        padding: 15px 12px 40px;
+    }
+
+    body > h1 {
+        font-size: 24px;
+        padding: 25px 20px;
+    }
+
+    body > h2,
+    body > h3 {
+        padding: 15px;
+    }
+
+    form > div {
+        padding: 20px 15px;
+    }
+
+    form > div h3 {
+        font-size: 16px;
+    }
+
+    #timer {
+        font-size: 34px;
+    }
+
+    form > div label {
+        padding: 13px;
     }
 }
