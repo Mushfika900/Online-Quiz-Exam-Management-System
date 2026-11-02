@@ -27,8 +27,6 @@ h2 {
     margin-top: 35px;
 }
 
-/* Back to Dashboard */
-
 body > a {
     display: inline-block;
     background: #6d28d9;
@@ -44,8 +42,6 @@ body > a {
 body > a:hover {
     background: #4c1d95;
 }
-
-/* Results Table */
 
 table {
     width: 100%;
