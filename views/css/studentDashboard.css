@@ -105,14 +105,15 @@ body > a:last-of-type:hover {
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
+
     body {
-        padding: 20px;
+        padding: 20px 15px;
     }
 
     h1 {
-        padding: 25px;
         font-size: 24px;
+        padding: 22px 18px;
     }
 
     h2 {
@@ -120,8 +121,29 @@ body > a:last-of-type:hover {
     }
 
     body > a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
-        margin-right: 0;
-        min-height: 130px;
+        max-width: 100%;
+        min-height: 125px;
+        height: auto;
+        margin: 0 0 15px;
+        padding: 20px;
+        font-size: 17px;
+        text-align: left;
+    }
+
+    body > a::before {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    body > a:last-of-type {
+        display: inline-flex;
+        width: auto;
+        min-height: auto;
+        padding: 12px 22px;
+        font-size: 14px;
     }
 }
