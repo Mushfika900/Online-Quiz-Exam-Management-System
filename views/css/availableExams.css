@@ -85,17 +85,34 @@ td a:hover {
     background: #293f82;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     body {
-        padding: 20px;
+        padding: 20px 15px;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .table-responsive {
+        width: 100%;
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 10px;
     }
 
     table {
         min-width: 700px;
     }
 
-    h1 {
-        font-size: 24px;
+    th, td {
+        padding: 12px;
+        font-size: 13px;
+        white-space: nowrap;
     }
 }

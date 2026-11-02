@@ -17,7 +17,7 @@ $exams = getActiveExams();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Exams</title>
-    <link rel="stylesheet" href="../css/availableExams.css">
+    <link rel="stylesheet" href="../css/availableExams.css?v=1">
 </head>
 <body>
 
@@ -28,6 +28,7 @@ $exams = getActiveExams();
     <a href="dashboard.php">Back to Dashboard</a>
 
     <h2>Exam List</h2>
+    <div class="table-responsive">
     <table border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th>Exam ID</th>
@@ -57,6 +58,7 @@ $exams = getActiveExams();
     }
     ?>
 </table>
+    </div>
 
 </body>
 </html>
